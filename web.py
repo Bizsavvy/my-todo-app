@@ -6,8 +6,10 @@ todos = functions.get_todos()
 
 def add_todo():
     todo_local = st.session_state["new_todo"] + "\n"
-    todos.append(todo_local.capitalize())
-    functions.write_todos(todos)
+    if todo_local:
+        todos.append(todo_local.capitalize())
+        functions.write_todos(todos)
+        st.session_state["new_todo"] = ""
 
 
 st.title("My To-Do App")
